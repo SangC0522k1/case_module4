@@ -1,7 +1,7 @@
 class AppPage {
     static renderProductItem(obj) {
         return `
-        <div class="card mx-3 col-3" style="width: 18rem;">
+        <div class="card mx-3 col-3" style="padding: 0;width: 22%">
   <img src=${obj.image} class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">${obj.name}</h5>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>Title</title>
+    <title>MS Shop</title>
     <th:block th:replace="/layout/head :: head"/>
 
     <link href="../../assets/css/style.css" rel="stylesheet">
@@ -12,9 +12,9 @@
     <div class="content-page">
 
         <div class="container-fluid">
-            <div class="products">
-                <ul id="panel-product" class="d-flex justify-content-start">
-                </ul>
+            <div class="row" id="product-list">
+<!--                <ul id="panel-product" class="d-flex justify-content-start">-->
+<!--                </ul>-->
             </div>
         </div>
     </div>
@@ -38,7 +38,7 @@
 
                 $.each(data, (i, item) => {
                     let str = AppPage.renderProductItem(item);
-                    $("#panel-product").prepend(str);
+                    $("#product-list").prepend(str);
                 })
 
                 // handleAddCart();
