@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title"><a href="/users">USER</a></h4>
+                            <h4 class="page-title"><a class="btn btn-success" href="/users">USER</a></h4>
                         </div>
                     </div>
                 </div>
@@ -32,18 +32,18 @@
                     <div class="card-box">
                         <div class="row">
                             <div class="col-9">
-                                <h4 class="header-title mb-3">List Product</h4>
+                                <h4 class="header-title mb-3" style="color: cornflowerblue;">List Product</h4>
 
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-success btn-add create"
+                                <button class="btn btn-info btn-add create"
                                         style="margin-left: 50px; margin-bottom: 15px"
                                         >
-                                    <i class="fa fa-plus"></i> Add new Product
+                                    <i class="fa fa-plus"></i> New Product
                                 </button>
                             </div>
                             <table id="tbProduct" class="table table-bordered dt-responsive nowrap"
-                                   style="border-collapse: collapse; border-spacing: 0; width: 100%;text-align: center ">
+                                   style="border-collapse: collapse; border-spacing: 0; width: 100%;text-align: center; background-color: beige; ">
                                 <thead>
                                 <tr>
                                     <th class="">Id</th>
@@ -92,7 +92,7 @@
                                     <td>${product.id}</td>
                                     <td>${product.name}</td>
                                     <td>
-                                       <img src="${product.image}" width="120px" height="auto"/>
+                                       <img src="${product.image}" width="120px" height="auto" alt=""/>
                                     </td>
                                     <td>${product.amount}</td>
                                     <td>${new Intl.NumberFormat('vi-VN', {
@@ -183,15 +183,6 @@
                         if (result.isConfirmed)
                             doBlock(id);
                     });
-
-            // findProductById(id).then(function () {
-            //     App.SweetAlert.showDeactivateConfirmDialog()
-            //         .then((result) => {
-            //
-            //             if (result.isConfirmed)
-            //                 doBlock();
-            //         });
-            // })
         })
     }
 

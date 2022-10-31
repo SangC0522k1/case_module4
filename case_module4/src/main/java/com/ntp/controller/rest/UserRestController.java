@@ -72,14 +72,15 @@ public class UserRestController {
     }
 
 
-    @DeleteMapping("/delete/{id}")
+    @PutMapping("/delete/{id}")
     public ResponseEntity<?> doDelete(@PathVariable Long id) {
         Optional<User> userDTO = userService.findByUserIdUser(id);
         if (userDTO.isPresent()) {
             userService.deleteSoft(userDTO.get().toUserDTO().toUser());
 
-            return new ResponseEntity<>("Delete Success", HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
+
         return new ResponseEntity<>("Delete False", HttpStatus.NO_CONTENT);
     }
 

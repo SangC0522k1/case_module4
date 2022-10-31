@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box">
-                            <h4 class="page-title"><a href="/products">PRODUCT</a></h4>
+                            <h4 class="page-title"><a class="btn btn-success" href="/products">PRODUCT</a></h4>
                         </div>
                     </div>
                 </div>
@@ -33,12 +33,12 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="card-box">
-                            <h4 class="header-title mb-4">List Users</h4>
+                            <h4 class="header-title mb-4" style="color: cornflowerblue;">List Users</h4>
 
                             <div class="table-responsive">
                                 <input type="hidden" id="currentRow" value="">
                                 <table id="tbUser" class="table table-bordered dt-responsive nowrap"
-                                       style="border-collapse: collapse; border-spacing: 0; width: 100%;text-align: center ">
+                                       style="border-collapse: collapse; border-spacing: 0; width: 100%;text-align: center;background-color: beige; ">
                                     <thead>
                                     <tr>
                                         <th style="text-align: center" class="col-1">#</th>
@@ -80,7 +80,7 @@
 <th:block th:replace="/layout/script :: script"/>
 
 <th:block th:replace="/user/modalUpdate"/>
-<script src="assets/js/iziToast-1.4.0.js"></script>
+<script src="/assets/js/iziToast-1.4.0.js"></script>
 
 
 
@@ -208,13 +208,6 @@
 
         console.log(user)
 
-        // let obj = {
-        //     fullName: $("#fullNameUp").val(),
-        //     phone: $("#phoneUp").val(),
-        //     username: $("#usernameUp").val(),
-        //
-        // }
-
         $.ajax({
             headers: {
                 accept: "application/json",
@@ -252,13 +245,10 @@
     });
 
     function showSuspendedModal() {
-
         let userId = user.id;
-        console.log(userId);
-        App.SweetAlert.showDeactivateConfirmDialog()
+        App.SweetAlert.showSuspendConfirmDialog()
             .then((result) => {
                 if (result.isConfirmed) {
-
                     doDelete(userId);
                 }
             });
@@ -268,28 +258,21 @@
     function doDelete(userId) {
         console.log(userId)
         $.ajax({
-            type: "DELETE",
+            type: "PUT",
             headers: {
                 'accept': "application/json",
                 'content-type': "application/json"
             },
             url: "http://localhost:8080/api/users/delete/" + userId,
             data: JSON.stringify(userId)
-        }).done((data) => {
-
+        }).done(() => {
             $("#tr_" + userId).remove();
 
-            iziToast.success({
-                title: 'OK',
-                position: 'topRight',
-                timeout: 2100,
-                message: "Delete Date Successfully !"
-            });
             App.SweetAlert.showSuccessAlert("Delete Date Successfully !");
 
-        }).fail(() => {
+        }).fail((jqxHR) => {
+            console.log(jqxHR);
             App.SweetAlert.showErrorAlert("An error occurred. Please try again later!");
-
         })
     }
 
@@ -297,7 +280,7 @@
     function handleShowGroupModal() {
         handleShowUpdateModal();
 
-        handleShowConfirmDelete();
+        // handleShowConfirmDelete();
     }
 
     function removeHandleShowModal() {
