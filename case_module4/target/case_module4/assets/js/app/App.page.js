@@ -9,7 +9,7 @@ class AppPage {
             style: 'currency',
             currency: 'VND'
         }).format(obj.price)}</p>
-    <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+    <button type="button" class="btn btn-cart" style="background-color: #f8d7da">Thêm Vào Giỏ</button>
   </div>
 </div>
         `
